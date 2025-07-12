@@ -1,6 +1,6 @@
 # Deep Learning - Traffic Density Classification
 
-This notebook leverages a custom dataset collected from Singapore's Land Transport Authority (LTA) API to build and evaluate deep learning models for traffic density classification. The images are labeled across five traffic density levels and are captured under varying conditions, including different lighting and camera angles.
+This notebook leverages a custom dataset collected from Singapore's Land Transport Authority (LTA) API to build and evaluate **deep learning models** for traffic density classification. The images are labeled across five traffic density levels and are captured under varying conditions, including different lighting and camera angles.
 
 ---
 
