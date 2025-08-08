@@ -68,7 +68,8 @@ This split enables effective model training while ensuring that performance metr
    - If running locally, update the dataset paths in the configuration cell accordingly.
 3) Run the notebook cells sequentially to preprocess data, train the model (two stages), and evaluate performance.
 
-Note on runtime: On a local CPU, training can be slow. Using Colab with a GPU significantly reduces runtime. Apple Silicon (M‑series) is supported via PyTorch MPS and works well for experimentation.
+NOTE:
+I had to subscribe to Google Colab’s premium tier to get faster GPU access for the convolutional neural network to handle high‑resolution image classification. On my 2024 MacBook Air with the M3 chip — powerful as it is — the process could take around 20 hours. By switching to a cloud‑based GPU (in this case, the NVIDIA P100), runtime drops to about 30–45 minutes. Colab’s architecture supports both Python and R, and grants up to 89.6 GB of RAM, making it a crucial resource for memory‑intensive tasks. If you need to run something that pushes beyond what a local CPU can handle, I highly recommend it! If you think we are friends, let me know and I can grant you access to my paid subscription.
 
 ---
 
