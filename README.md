@@ -123,6 +123,27 @@ Use the pinned setup above, open the notebook, and point the dataset paths to yo
 ```
 Upload or mount the dataset, unzip to `/content/traffic_density/`, then run all cells.
 
+#### Build your own dataset programmatically (optional)
+1) Fetch raw images from Singapore's data.gov.sg Traffic Images API and create a ZIP expected by the notebook:
+```bash
+!python fetch_lta_images_to_zip.py --snapshots 3 --interval 60
+!unzip /content/traffic-density-singapore.zip -d /content/traffic_density
+```
+2) Auto‑label images into `Empty/Low/Medium/High/Traffic Jam` using a YOLO vehicle counter and create the final dataset ZIP:
+```bash
+!pip install ultralytics tqdm
+!python auto_label_density.py \
+  --raw_dir /content/traffic_density/raw \
+  --out_root /content/traffic_density \
+  --train_ratio 0.8 --val_ratio 0.1 --test_ratio 0.1 \
+  --model yolov8n.pt --conf 0.25 --ymin 0.0 --ymax 1.0 \
+  --make_zip --zip_path /content/traffic-density-singapore.zip
+!unzip /content/traffic-density-singapore.zip -d /content/traffic_density
+```
+Notes:
+- Thresholds for density mapping can be tuned: `--thr_low`, `--thr_med`, `--thr_high`.
+- Keep weight files (`.pth`) outside dataset folders.
+
 ---
 
 ## Results
