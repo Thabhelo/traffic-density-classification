@@ -23,6 +23,15 @@ This notebook leverages a custom dataset collected from Singapore's Land Transpo
 
 This project is centered around developing a robust deep learning solution to classify traffic density based on images captured from multiple traffic cameras. The dataset includes images taken during both daytime and nighttime, ensuring that the models are well‑equipped to handle diverse lighting and environmental conditions.
 
+### Adaptation and originality
+This work was initially inspired by and adapted from Sudhanshu Rastogi’s traffic density classification project. It has been substantially redesigned (approximately 70% of the pipeline and code paths) to improve capability, reproducibility, and usability:
+- Replaced Google’s EfficientNet‑B0 with Meta’s ConvNeXt‑Tiny (via `timm`), chosen for stronger performance at similar compute and a modern training recipe.
+- Introduced a new training stack: AdamW optimizer, OneCycleLR scheduler, mixed‑precision (AMP), MixUp/CutMix with Soft‑Target Cross‑Entropy, and deterministic evaluation.
+- Switched to high‑quality `timm` transforms at 384×384 with RandAugment and Random Erasing.
+- Added Apple Silicon (MPS) support, better device handling, and pin‑memory hygiene.
+- Implemented optional explainability (Grad‑CAM) and automated dataset creation: API fetching and YOLO‑based auto‑labeling into density buckets, with end‑to‑end scripts and a turnkey notebook setup cell.
+These changes make the project easy to fork and run while providing a clearly original, extended feature set beyond the source inspiration.
+
 ---
 
 ## Dataset Description
